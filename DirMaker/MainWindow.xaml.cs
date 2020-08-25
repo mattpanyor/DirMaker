@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using DirMaker.model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,6 +32,8 @@ namespace DirMaker
         public MainWindow()
         {
             InitializeComponent();
+            btn_SelectRoot.IsEnabled = false;
+            btn_goProcedure.IsEnabled = false;
         }
 
         private void btn_SelectFile_Click(object sender, RoutedEventArgs e)
@@ -41,12 +44,23 @@ namespace DirMaker
             {
                 this.filepath = openFileDialog.FileName;
                 lbl_StatusMessage.Content = "Selected input file: " + openFileDialog.SafeFileName;
+                btn_SelectRoot.IsEnabled = true;
 
             }
         }
 
         private void btn_goProcedure_Click(object sender, RoutedEventArgs e)
         {
+            FolderMaker folderMaker = new FolderMaker(filepath, rootFolderPath);
+            if (folderMaker.goProcedure())
+            {
+                lbl_StatusMessage.Content = "Operation was successful!";
+                lbl_StatusMessage.Foreground = Brushes.Green;
+            } else
+            {
+                lbl_StatusMessage.Content = "Operation has failed!";
+                lbl_StatusMessage.Foreground = Brushes.Red;
+            }
 
         }
 
@@ -57,8 +71,9 @@ namespace DirMaker
             if (dialog.SelectedPath != "")
             {
                 rootFolderPath = dialog.SelectedPath;
+                lbl_StatusMessage.Content += "\nSelected output folder: " + dialog.SelectedPath;
+                btn_goProcedure.IsEnabled = true;
             }
-            
         }
     }
 }

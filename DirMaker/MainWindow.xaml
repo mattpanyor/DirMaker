@@ -9,21 +9,25 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="50*"></RowDefinition>
-            <RowDefinition Height="50*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15pt" FontWeight="Bold">DirMaker v1.0.0a</Label>
-        <Label Grid.Row="3" HorizontalAlignment="Right" FontStyle="Italic" FontStretch="ExtraExpanded">Created by Matt P.</Label>
+        <Label Grid.Row="4" HorizontalAlignment="Right" FontStyle="Italic" FontStretch="ExtraExpanded">Created by Matt P.</Label>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="SELECT FILE" Margin="0,0,30,0" Name="btn_SelectFile" Click="btn_SelectFile_Click"/>
-            <Button Content="SELECT ROOT FOLDER" Margin="0,0,30,0" Name="btn_SelectRoot" Click="btn_SelectRoot_Click"/>
-            <Button Content="GO" Name="btn_goProcedure" Click="btn_goProcedure_Click"/>
+            <Button Content="SELECT FILE" Margin="0,0,30,0" Name="btn_SelectFile" Click="btn_SelectFile_Click" Width="0" Height="0" MinWidth="200" MinHeight="40"/>
+            <Button Content="SELECT ROOT FOLDER" Margin="0,0,0,0" Name="btn_SelectRoot" Click="btn_SelectRoot_Click" MinWidth="200" MinHeight="40"/>
         </StackPanel>
 
-        <Label Grid.Row="2" Content="Awaiting orders..." FontStyle="Italic" FontSize="17pt" Margin="15,15,15,15" Name="lbl_StatusMessage"></Label>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="CREATE FOLDERS" Name="btn_goProcedure" Click="btn_goProcedure_Click" MinWidth="150" MinHeight="40"/>
+        </StackPanel>
+
+        <Label Grid.Row="3" Content="Awaiting orders..." FontStyle="Italic" FontSize="12pt" Margin="15,15,15,15" Name="lbl_StatusMessage"></Label>
 
     </Grid>
 </Window>
